@@ -1,7 +1,7 @@
 const OPTIONS = ["Rock", "Paper", "Scissors"];
 
 function random(number1, number2){
-    return Math.floor(Math.random()*number2-number1) + number1;
+    return Math.floor(Math.random()*(number2-number1)) + number1;
 }
 
 function calcOption(number1){
@@ -16,12 +16,16 @@ function transformUserInput(inputString){
     return `${inputString[0].toUpperCase()}${inputString.slice(1).toLowerCase()}`;
 }
 
+
+
 function checkRound(playerSelection, computerSelection){
+  
     if(playerSelection !== undefined){
         playerSelection = transformUserInput(playerSelection);
     }else{
         return "Enter rock, paper or scissors.";
     }
+
     let result = "";
     let winningSelection = "";
     let losingSelection = "";
@@ -59,4 +63,10 @@ function checkRound(playerSelection, computerSelection){
 
 }
 
-
+function game(){
+    for(let i = 0; i < 5; i++){
+        let playerSelection = prompt("Enter your choice(rock|paper|scissors)");
+        console.log(checkRound(playerSelection, computerPlay()));
+    }
+}
+game();
